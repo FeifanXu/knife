@@ -2,13 +2,28 @@
 #define KNIFE_HPP
 
 
-/// cmake usage:
-///             set(KINFE_PATH ./__knife)
-///             include_directories(${KINFE_PATH})
-///             file(GLOB KNIFE ${KINFE_PATH}/*/*.c ${KINFE_PATH}/*/*.h ${KINFE_PATH}/*/*.?pp ${KINFE_PATH}/*.hpp)
-///             add_executable(XXX ${KNIFE})
+/// 设置Python和Threads，如果实验环境使用了Conda
+///     请设置 CONDA_DIR 和 PY_ENV 来指定python
+//set(CONDA_DIR /home/<your_path>/miniconda2)
+//set(PY_ENV py27gpu) # an example
+//
+//set(PYTHON_PREFIX ${CONDA_DIR}/envs/${PY_ENV})
+//if (EXISTS ${PYTHON_PREFIX}/bin/python)
+//  set(PYTHON_INCLUDE_DIRS ${PYTHON_PREFIX}/include/python2.7)
+//  set(PYTHON_LIBRARIES ${PYTHON_PREFIX}/lib/libpython2.7.so)
+//  set(PYTHON_EXECUTABLE ${PYTHON_PREFIX}/bin/python)
+//else()
+//  find_package(PythonLibs)
+//endif()
+//find_package(Threads)
 
-// knife工具的对外接口，包含了各子模块。
+/// # 设置 Knife
+//  set(KINFE_PATH ./__knife) # an example
+//  include_directories(${KINFE_PATH})
+//  file(GLOB KNIFE ${KINFE_PATH}/*/*.c ${KINFE_PATH}/*/*.?pp ${KINFE_PATH}/*.hpp)
+//  add_executable(XXX ${KNIFE})
+
+/// knife工具的对外接口，包含了各子模块。
 // 注意：子模块不能包含kinfe！
 //         否则循环include会有错
 

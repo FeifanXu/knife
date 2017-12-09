@@ -275,9 +275,9 @@ namespace knife {
         char *result; // the return string
         const char *ins;    // the next insert point
         char *tmp;    // varies
-        int len_rep;  // length of rep (the string to remove)
-        int len_with; // length of with (the string to replace rep with)
-        int len_front; // distance between rep and end of last rep
+        size_t len_rep;  // length of rep (the string to remove)
+        size_t len_with; // length of with (the string to replace rep with)
+        size_t len_front; // distance between rep and end of last rep
         int count;    // number of replacements
 
         // sanity checks and initialization
@@ -292,14 +292,15 @@ namespace knife {
 
         // count the number of replacements needed
         ins = orig;
-        for (count = 0; tmp = strstr(ins, rep); ++count) {
+        // const_cast <char *> 为了兼容gcc和clang FIXME 为什么gcc 输入是char* 不带const？ 这样casting安全吗？
+        for (count = 0; tmp = strstr(const_cast <char *>(ins), const_cast <char *> (rep)); ++count) {
             ins = tmp + len_rep;
         }
 
         tmp = result = (char*)malloc(strlen(orig) + (len_with - len_rep) * count + 1);
 
         if (!result)
-            return NULL;
+            return nullptr;
 
         // first time through the loop, all the variable are set correctly
         // from here on,

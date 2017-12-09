@@ -4,6 +4,9 @@
 
 #include "knife.hpp"
 
+
+// TODO 这些可以放进 knife_optional.hpp
+
 #define INTEGER " INTEGER "
 #define TEXT " TEXT "
 
@@ -65,4 +68,4 @@ int run_all() {
     return 0;
 }
 
-int main() { return run_all(); } // 非测试kinfe时，请注释掉该行
+//int main() { return run_all(); } // 非测试kinfe时，请注释掉该行

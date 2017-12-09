@@ -259,6 +259,13 @@ public: /// 用户使用的外部接口
 
     }
 
+    // 统计某张表的行数
+    const void count(const char *table, const char *t_where = nullptr, ...)const{
+        knife::buf_char where(1024);
+        FILL_IN(t_where, where.ptr);
+        select(table,"COUNT(*)",where.ptr);
+    }
+
     // 获取查询结果 usage:  $sql.query_result[i][j]
     const table_t &query_result() const {
         return ScreenData();
