@@ -8,9 +8,14 @@
 #include <Python.h>
 #include "AbstractEnv.hpp"
 
-/// 请在CMakeLists.txt里添加Python库：
-///   include_directories(${PYTHON_INCLUDE_DIRS})
-///   target_link_libraries(xxx ${PYTHON_LIBRARIES})
+/// 请在CMakeLists.txt里添加Python库：(兼容conda与原生python)
+///   if (EXISTS <conda>/envs/<env>/bin/python)
+///     set(PYTHON_INCLUDE_DIRS <conda>/envs/<env>/include/python2.7)
+///     set(PYTHON_LIBRARIES <conda>/envs/<env>/lib/libpython2.7.so)
+///     set(PYTHON_EXECUTABLE <conda>/envs/<env>/bin/python)
+///   else()
+///     find_package(PythonLibs)
+///   endif()
 
 // TODO Check 接口应该是public的才对。。。
 
