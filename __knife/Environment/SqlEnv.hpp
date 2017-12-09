@@ -28,7 +28,9 @@ protected: /// 实现纯虚函数
 
     // 初始化编程环境
     void Initialize() const override {
-        /* Open database */
+        // 默认显示查询结果
+        mShowQueryResult.push(true);
+        // 打开数据库
         int rc = sqlite3_open(DefaultDB, &m_pDbConnection);
         if (rc) {
             fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(m_pDbConnection));
@@ -161,11 +163,11 @@ private: /// 以下为自定义需求
     }
 
 public: /// 用户使用的外部接口
-    mutable bool mShowQueryResult = true;// 有时query的结果会刷屏，但是我们并不需要这些结果，可以用此变量进行控制
+    mutable std::stack<bool> mShowQueryResult;// 有时query的结果会刷屏，但是我们并不需要这些结果，可以用此变量进行控制
     // 打印SQL查询结果
     void show() const {
 
-        if (!mShowQueryResult)return;
+        if (!mShowQueryResult.top())return;
 
         const auto &title = ScreenTitle();
         const auto &data = ScreenData();
