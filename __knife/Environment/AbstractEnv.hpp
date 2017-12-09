@@ -31,8 +31,9 @@ private: /// 混编的公共需求
     const AbstractEnv &__$env = *this;//供内部使用
 
 public:
-    // 执行一条环境语句，如python语句的时候，是否显示所执行的指令内容
-    mutable bool mMutePrompt = false;
+    // mMutePrompt的栈顶元素，决定了执行环境语句（如python语句）时，是否显示该指令内容
+    // push(true) 则隐藏指令内容，push(false)则显示指令内容，完成局部需求后要pop
+    mutable std::stack<bool> mMutePrompt;
 
     // 当前环境的名称，赋值后不可改变
     const std::string mEnvName;
@@ -43,9 +44,9 @@ public:
     // 所有生成的Env单例对象单指针
     static_member(std::vector<AbstractEnv *>, EnvList);
 
-    // 抽象父环境的构造函数，初始化常量变量
+    // 抽象父环境的构造函数，初始化常量变量，默认显示Prompt
     explicit AbstractEnv(const char *_name, const char *_color) :
-            mEnvName(_name), mColor(_color) {}
+            mEnvName(_name), mColor(_color) { mMutePrompt.push(false); }
 
     virtual ~AbstractEnv() = default; // 默认析构
 
@@ -93,7 +94,7 @@ public:
     // 多线程安全地执行一条语句,单字符串参数，若mute则不输出指令内容，反之输出
     void safe_exec(const char *cmd) const {
         assert(mEnvName.length() > 0);
-        if (!mMutePrompt)
+        if (!mMutePrompt.top())
             printf("%s$%s>>>" ANSI_COLOR_CYAN " %s\n", this->mColor, mEnvName.c_str(), cmd);
 
         static std::mutex m;

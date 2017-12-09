@@ -27,6 +27,7 @@
 #include <map>
 #include <deque>
 #include <array>
+#include <stack>
 
 #include <algorithm>
 #include <utility>
