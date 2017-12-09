@@ -21,9 +21,12 @@ void usage_$py() {
     $py.print_obj("a");
 
     $py("len = a.shape[0]");
+    $py("x = 1.0/3.0");
 
     $py_get(int, len);
+    $py_get(float, x);
     std::cout << len << std::endl;
+    std::cout << x << std::endl;
 }
 
 
@@ -62,4 +65,4 @@ int run_all() {
     return 0;
 }
 
-int main() { return run_all(); }
+int main() { return run_all(); } // 非测试kinfe时，请注释掉该行
