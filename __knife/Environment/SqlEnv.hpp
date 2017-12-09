@@ -46,7 +46,6 @@ protected: /// 实现纯虚函数
         // 把 mod 转 % 成
         const char* cmd_replaced = knife::replace_all(cmd,"mod","%");
         //printf(cmd_replaced); // 正常的情况是，%不显示，因为printf也存在转义，如果ptintf出%意味着字串里是%%，SQL会有语法错误
-        printf("\n");
         /// 执行sql代码之前，清空屏幕内容
         ScreenTitle().clear();
         ScreenData().clear();

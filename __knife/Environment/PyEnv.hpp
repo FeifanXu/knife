@@ -8,6 +8,7 @@
 #include <Python.h>
 #include "AbstractEnv.hpp"
 
+// TODO 其实这里也有重复，可以进行优化
 /// 请在CMakeLists.txt里添加Python库：(兼容conda与原生python)
 ///   if (EXISTS <conda>/envs/<env>/bin/python)
 ///     set(PYTHON_INCLUDE_DIRS <conda>/envs/<env>/include/python2.7)
@@ -148,9 +149,10 @@ public: /// 用户使用的外部接口
 
     // 执行一句import语句，若as非空，则再执行as语句
     void import(const char *module, const char *as = nullptr) const {
-        __$py("import %s", module);
         if (as)
             __$py("import %s as %s", module, as);
+        else
+            __$py("import %s", module);
     }
 
     // 打印某模块的version
