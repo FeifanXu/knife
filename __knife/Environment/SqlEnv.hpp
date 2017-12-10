@@ -46,15 +46,14 @@ protected: /// 实现纯虚函数
     // 执行一句代码，不需要考虑线程安全
     void ExecSript(const char *cmd) const override {
         // 把 mod 转 % 成
-        const char* cmd_replaced = knife::replace_all(cmd,"mod","%");
+        std::string cmd_replaced = std::regex_replace(cmd, std::regex("mod"), "%");
         //printf(cmd_replaced); // 正常的情况是，%不显示，因为printf也存在转义，如果ptintf出%意味着字串里是%%，SQL会有语法错误
         /// 执行sql代码之前，清空屏幕内容
         ScreenTitle().clear();
         ScreenData().clear();
         char *zErrMsg = nullptr;
         const char *data = "Callback function called";
-        int rc = sqlite3_exec(m_pDbConnection, cmd_replaced, callback_default, (void *) data, &zErrMsg);
-        delete[] cmd_replaced;// 释放内存！
+        int rc = sqlite3_exec(m_pDbConnection, cmd_replaced.c_str(), callback_default, (void *) data, &zErrMsg);
         if (rc != SQLITE_OK) {
             printf("SQL ERR: %s\n", zErrMsg);
             if (zErrMsg)
@@ -305,9 +304,6 @@ public: /// 用户使用的外部接口
         __$sql("ALTER TABLE %s ADD COLUMN %s %s;",
                table, col, type);
     }
-
-    //  思考： 这里可以用 load_cols + where xxx == null 来代替
-    //  bool col_exist_null(const char *col) const; // 待移除
 };
 
 #endif //SQLENV_HPP

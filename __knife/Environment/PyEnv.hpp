@@ -5,8 +5,8 @@
 #ifndef PYENV_HPP
 #define PYENV_HPP
 
-#include <Python.h>
 #include "AbstractEnv.hpp"
+#include <Python.h>
 
 // TODO 其实这里也有重复，可以进行优化
 /// 请在CMakeLists.txt里添加Python库：(兼容conda与原生python)
@@ -21,7 +21,7 @@
 // TODO Check 接口应该是public的才对。。。
 
 // TODO $py_get(float,utUs) 调用template实现
-#define $py_get(T,var) auto var=$py.get_obj_as_<T>(#var);
+#define $py_get(T, var) auto var=$py.get_obj_as_<T>(#var);
 
 // 运行Python的抽象环境
 class PyEnv : public AbstractEnv {
@@ -31,11 +31,25 @@ protected: /// 实现纯虚函数
 
     // 初始化编程环境
     void Initialize() const override {
+        // 默认加载的几个pkg
+        const char *init_pkg[] = {"sys", "os"};
+
         Py_Initialize();
-        // TODO 这里要 push mute 一下
-        __$py.import("sys");
+        __$py.mMutePrompt.push(true);
+
+        for (int i = 0; i < ARRAY_SIZE(init_pkg); ++i)
+            __$py.import(init_pkg[i]);
+
         __$py("sys.argv=['']");
+        // 自动引入当前（一般为build目录）
+        // 父目录（一般为Cpp源码）
+        // 二级父目录（一般包含了其他语言的项目工程）
+        // 注意！ 有 __init__.py 的文件夹，才被认为是python包！
+        __$py.path_append(".");
+        __$py.path_append("..");
+        __$py.path_append("../..");
         this->def_dump();
+        __$py.mMutePrompt.pop();
     }
 
     // 编程环境的清理工作
@@ -134,11 +148,12 @@ public: /// 用户使用的外部接口
     }
 
     // 返回类型T的对象，由str构造，因此只支持了重载了 operaor >> 的类型
-    template <typename T> T get_obj_as_(const char *obj_name)const{
+    template<typename T>
+    T get_obj_as_(const char *obj_name) const {
         std::stringstream ss;
-        ss<<get_obj_as_str(obj_name);
+        ss << get_obj_as_str(obj_name);
         T ret;
-        ss>>ret;
+        ss >> ret;
         return ret;
     }
 
@@ -167,7 +182,7 @@ public: /// 用户使用的外部接口
 
     // 打印当前环境的path
     void syspath() const {
-        this->import("sys");
+        //this->import("sys");// init时已经加载
         this->print_str("System PATH:");
         this->print_obj("sys.path");
     }
@@ -177,21 +192,18 @@ public: /// 用户使用的外部接口
 
     // 增加当前环境的path
     void path_append(const char *dir) const {
-        this->import("sys");
         __$py("sys.path.append(\'%s\')", dir);
     }
 
-    // 增加当前环境的path
-    void path_insert(int pos,const char *dir) const {
-        this->import("sys");
-        __$py("sys.path.insert(%d,\'%s\')", pos,dir);
+    // 在指定位置，插入当前环境的path
+    void path_insert(int pos, const char *dir) const {
+        __$py("sys.path.insert(%d,\'%s\')", pos, dir);
     }
 
-//    // 清空当前环境的path // TODO 未测试
-//    void path_clear() const {
-//        this->import("sys");
-//        __$py("sys.path=[]");
-//    }
+    // 根据conda的安装地址，即环境名，增加当前环境的path
+    void path_append_conda(const char *conda_path,const char* env_name) const {
+        __$py("sys.path.append('%s/envs/%s/lib/python2.7/site-packages')", conda_path,env_name);
+    }
 
     // 设置环境变量
     void set_environ(const char *key, const char *val) const {
@@ -199,7 +211,6 @@ public: /// 用户使用的外部接口
         __$py("os.environ[\'%s\'] = \'%s\'", key, val);
 
     }
-
 };
 
 #endif //PYENV_HPP

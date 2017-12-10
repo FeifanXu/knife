@@ -28,6 +28,8 @@
 #include <deque>
 #include <array>
 #include <stack>
+#include <string>
+#include <regex>
 
 #include <algorithm>
 #include <utility>
@@ -44,7 +46,6 @@
 #include <fstream>
 #include <sstream>
 
-
 #ifdef _WIN32 // for: access(const char *, int);
 #include <io.h>
 #include <process.h>
@@ -54,6 +55,7 @@
 #else
 
 #include <unistd.h>
+
 
 #define strcmp_i strcasecmp
 #endif
@@ -259,63 +261,13 @@ namespace knife {
         return (0 == access(path.c_str(), F_OK));
     }
 
-    // 替换字符串中某char
+    // 替换字符串中某char (注：replace_all 请使用regex)
     inline char *replace(const char *_src, char *_dest, char _org, char _new) {
         std::strcpy(_dest, _src);
         for (int i = 0; _dest[i] != 0; ++i)
             if (_dest[i] == _org)
                 _dest[i] = _new;
         return _dest;
-    }
-
-    // 替换字符串中某字串，记得free返回值的内存
-    inline const char *replace_all(const char *orig,const char *rep,const char *with) {
-        // You must free the result if result is non-NULL.
-        // https://stackoverflow.com/questions/779875/what-is-the-function-to-replace-string-in-c
-        char *result; // the return string
-        const char *ins;    // the next insert point
-        char *tmp;    // varies
-        size_t len_rep;  // length of rep (the string to remove)
-        size_t len_with; // length of with (the string to replace rep with)
-        size_t len_front; // distance between rep and end of last rep
-        int count;    // number of replacements
-
-        // sanity checks and initialization
-        if (!orig || !rep)
-            return NULL;
-        len_rep = strlen(rep);
-        if (len_rep == 0)
-            return NULL; // empty rep causes infinite loop during count
-        if (!with)
-            with = "";
-        len_with = strlen(with);
-
-        // count the number of replacements needed
-        ins = orig;
-        // const_cast <char *> 为了兼容gcc和clang FIXME 为什么gcc 输入是char* 不带const？ 这样casting安全吗？
-        for (count = 0; tmp = strstr(const_cast <char *>(ins), const_cast <char *> (rep)); ++count) {
-            ins = tmp + len_rep;
-        }
-
-        tmp = result = (char*)malloc(strlen(orig) + (len_with - len_rep) * count + 1);
-
-        if (!result)
-            return nullptr;
-
-        // first time through the loop, all the variable are set correctly
-        // from here on,
-        //    tmp points to the end of the result string
-        //    ins points to the next occurrence of rep in orig
-        //    orig points to the remainder of orig after "end of rep"
-        while (count--) {
-            ins = strstr(orig, rep);
-            len_front = ins - orig;
-            tmp = strncpy(tmp, orig, len_front) + len_front;
-            tmp = strcpy(tmp, with) + len_with;
-            orig += len_front + len_rep; // move to next "end of rep"
-        }
-        strcpy(tmp, orig);
-        return result;
     }
 
     // 输入可变长变量，根据其类型，输出其格式化转义符（注意：字串被单引号包裹）
