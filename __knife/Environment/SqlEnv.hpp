@@ -184,15 +184,15 @@ public: /// 用户使用的外部接口
     }
 
     // 将SQL查询结果保存成csv或tsv
-    void dump(const char* filename, const char comma = ',') const {
+    void dump(const char *filename, const char comma = ',') const {
 
         std::stringstream ss;
-        ss<<knife::vec2csv(ScreenTitle())<<'\n';
+        ss << knife::vec2csv(ScreenTitle()) << '\n';
 
-        for(int i=0;i<ScreenData().size();++i)
-            ss<<knife::vec2csv(ScreenData()[i])<<'\n';
+        for (int i = 0; i < ScreenData().size(); ++i)
+            ss << knife::vec2csv(ScreenData()[i]) << '\n';
 
-        knife::str2file(filename,ss.str().c_str());
+        knife::str2file(filename, ss.str().c_str());
     }
 
     // 创建一张表, 需要长指令拼接模式
@@ -259,10 +259,10 @@ public: /// 用户使用的外部接口
     }
 
     // 统计某张表的行数
-    const void count(const char *table, const char *t_where = nullptr, ...)const{
+    const void count(const char *table, const char *t_where = nullptr, ...) const {
         knife::buf_char where(1024);
         FILL_IN(t_where, where.ptr);
-        select(table,"COUNT(*)",where.ptr);
+        select(table, "COUNT(*)", where.ptr);
     }
 
     // 获取查询结果 usage:  $sql.query_result[i][j]

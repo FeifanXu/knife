@@ -201,8 +201,8 @@ public: /// 用户使用的外部接口
     }
 
     // 根据conda的安装地址，即环境名，增加当前环境的path
-    void path_append_conda(const char *conda_path,const char* env_name) const {
-        __$py("sys.path.append('%s/envs/%s/lib/python2.7/site-packages')", conda_path,env_name);
+    void path_append_conda(const char *conda_path, const char *env_name) const {
+        __$py("sys.path.append('%s/envs/%s/lib/python2.7/site-packages')", conda_path, env_name);
     }
 
     // 设置环境变量

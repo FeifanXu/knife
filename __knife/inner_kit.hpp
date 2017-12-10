@@ -305,13 +305,13 @@ namespace knife {
     }
 
     // 将vector转换为csv格式，结尾无空格，csv所用符号，可用参数comma替换
-    template <typename T>
-    inline std::string vec2csv(const std::vector<T>& vec, char comma=','){
+    template<typename T>
+    inline std::string vec2csv(const std::vector<T> &vec, char comma = ',') {
         std::stringstream ss;
-        for(int i=0;i<vec.size();++i){
-            ss<<vec[i];
-            if(i!=vec.size()-1)
-                ss<<comma;
+        for (int i = 0; i < vec.size(); ++i) {
+            ss << vec[i];
+            if (i != vec.size() - 1)
+                ss << comma;
         }
         return ss.str();
     }
