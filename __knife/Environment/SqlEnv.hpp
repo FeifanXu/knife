@@ -47,8 +47,10 @@ protected: /// 实现纯虚函数
     void ExecSript(const char *cmd) const override {
         ///重要！若使用gcc，则要求版本不低于4.9 否则regex未实现
         std::string cmd_replaced = std::regex_replace(cmd, std::regex("mod"), "%");// 把 mod 转 % 成
-        std::cout << cmd_replaced << std::endl;
-        //printf(cmd_replaced); // 正常的情况是，%不显示，因为printf也存在转义，如果ptintf出%意味着字串里是%%，SQL会有语法错误
+
+        //printf(cmd_replaced); // 正常的情况是，%不显示，因为printf存在转义，需要 %%，但因此SQL会有语法错误
+        //std::cout << cmd_replaced << std::endl; // cout 会解决%转义的问题，直接输出 %
+
         /// 执行sql代码之前，清空屏幕内容
         ScreenTitle().clear();
         ScreenData().clear();
