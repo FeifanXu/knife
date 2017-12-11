@@ -29,7 +29,7 @@
 #include <array>
 #include <stack>
 #include <string>
-#include <regex>
+#include <regex>    //若使用gcc，则要求版本不低于4.9 否则regex未实现
 
 #include <algorithm>
 #include <utility>
