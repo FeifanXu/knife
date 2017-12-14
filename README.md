@@ -5,16 +5,16 @@
 ## Outline 概述
   Knife 使用 $py、$sql 和 $bash 进行混合编程，使用knife::speedup<N>进行多线程加速  
   例如：
-```C++
+```bash
 $bash("echo $(pwd)");
 ```
   相当于在当前bash环境下执行一句 echo $(pwd) 同样地
-```C++
+```python
 $py("import numpy as np");
 $py("print (np.zeros(3))");
 ```
   相当于在Python环境下引入np，并打印3维零向量，Python环境在编译时指定，可以设置为Conda
-```C++
+```SQL
 $sql("CREATE TABLE Foo(ID INTEGER, Msg TEXT);");
 ```
   相当于在SQLite环境下的默认数据库里，创建一张表
