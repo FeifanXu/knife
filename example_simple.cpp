@@ -1,9 +1,7 @@
-# knife
-A Simple, Elegant, Very Convenient C++ Syntactic-Sugar Library, for Multi-thread Speedup, and Hybrid programming with Python, SQLite and Bash
+//
+// Created by xf on 2017/12/14.
+//
 
-## usage
-   ```C
-   
 #include <knife.hpp>
 
 int main() {
@@ -29,5 +27,3 @@ int main() {
 
     $sql("DROP TABLE Foo;");
 }
-   
-   ```
