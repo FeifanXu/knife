@@ -10,17 +10,20 @@
 
 int main() {
 
+    // Bash混合编程样例
     std::cout << "Demo of $bash" << std::endl;
     $bash("mkdir lalala");
     $bash("ls | grep lalala");
     $bash("rm -r lalala");
 
+    // Python混合编程样例
     std::cout << "Demo of $py" << std::endl;
     $py("msg, pi = %s, %f", "\'hello\'", 3.1415926f);// formatted string
     $py("print (msg)");
     $py_get(float, pi);// 'Same' Variable Name
     std::cout << pi << std::endl;
 
+    // SQLite混合编程样例
     std::cout << "Demo of $sql" << std::endl;
     $sql("CREATE TABLE Foo(ID INTEGER, Msg TEXT);");
     int ID = 1;
@@ -30,11 +33,11 @@ int main() {
     std::cout << $sql.query_result()[0][1] << std::endl;
     $sql("DROP TABLE Foo;");
 
-    // 32-threads, do job 50 times
-    int batchNum=50;
+    // 多线程加速样例
+    int batchNum=50;// 32-threads, do job 50 times
     knife::speedup<32>(batchNum, [] {printf("");}, "task-foo");
 }
 ```
   以上结果的输出为  
   ![all_usage](https://github.com/FeifanXu/knife/blob/master/pic/all_usage_simple.png)  
-  
+  C++的输出为白色，第三方编程环境的输出为黄色，不同环境的提示符有相应颜色来区分
