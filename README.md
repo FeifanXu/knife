@@ -35,4 +35,6 @@ int main() {
     knife::speedup<32>(batchNum, [] {printf("");}, "task-foo");
 }
 ```
+  以上结果的输出为  
+  ![all_usage](https://github.com/FeifanXu/knife/blob/master/pic/all_usage_simple.png)  
   
