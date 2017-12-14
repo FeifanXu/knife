@@ -159,7 +159,9 @@ public: /// 用户使用的外部接口
 
     // 输入一个python中的变量名，将其字符串形式打印到文件
     void dump(const char *obj_name, const char *file_name = nullptr) const {
+        __$py.mMutePrompt.push(true);
         __$py("%s(%s,'%s')", _dump_py_func_name, obj_name, file_name ? file_name : _default_dump_file);
+        __$py.mMutePrompt.pop();
     }
 
     // 执行一句import语句，若as非空，则再执行as语句
