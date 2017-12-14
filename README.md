@@ -5,7 +5,7 @@ A Simple, Elegant, Very Convenient C++ Syntactic-Sugar Library, for Multi-thread
    ```C
    #include<stdio.h>
    int main(){
-     printf("hello");
+      
       $sql.create_table(tname)
                     ._("id"   INTEGER PRIMARY_KEY AUTOINCREMENT)._(cm)
                     ._("Str1" TEXT NOT_NULL UNIQUE)._(cm)
