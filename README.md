@@ -1,6 +1,13 @@
 # knife
-A Simple, Elegant, Very Convenient C++ Syntactic-Sugar Library, for Multi-thread Speedup, and Hybrid programming with Python, SQLite and Bash
-
+  Knife is A Simple, Elegant, Very Convenient C++ Syntactic-Sugar Library, for Multi-thread Speedup, and Hybrid programming with Python, SQLite and Bash
+  
+  Knife 是一个简单，优雅，非常好用的C++语法糖库，用于多线程加速，以及与Python，SQLite，Bash的混合编程
+  
+## Outline
+```C
+    $py("print (numpy.zeros[3])");
+    $sql("CREATE TABLE Foo(ID INTEGER, Msg TEXT);");
+```
 ## Usage: $sql
 ```C
    
