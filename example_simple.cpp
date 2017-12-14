@@ -5,25 +5,8 @@
 #include <knife.hpp>
 
 int main() {
-
-    $sql("CREATE TABLE Foo(ID INTEGER, Msg TEXT);");
-
-    // variables which have the 'same' names with cols
-    // can insert into DB very easily and elegantly
-    int ID;
-    const char *Msg;
-
-    ID = 1;
-    Msg = "hello";
-    $sql.insert_easily("Foo", ID, Msg);
-
-    ID = 2;
-    Msg = "world";
-    $sql.insert_easily("Foo", ID, Msg);
-
-    $sql("SELECT * FROM Foo");
-    std::cout << $sql.query_result()[0][1] << std::endl;
-    std::cout << $sql.query_result()[1][1] << std::endl;
-
-    $sql("DROP TABLE Foo;");
+    const char* var_name="pi";
+    float var_value=3.1415926f;
+    $py("%s = %f",var_name,var_value);
+    $py("print (%s)",var_name);
 }
