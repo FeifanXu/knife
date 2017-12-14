@@ -39,8 +39,10 @@ float var_value=3.1415926f;     // variable value in python
 $py("%s = %f",var_name,var_value); 
 $py("print (%s)",var_name);
 ```
-  所有knife混合编程操作，均支持格式化字符串输出，使用%占位符，以及可变长参数输入（类似printf），可以自由控制混编环境所执行的代码
-
+  所有knife混合编程操作，均支持格式化字符串输出，使用%占位符，以及可变长参数输入（类似printf），可以自由控制混编环境所执行的代码  
+  以上代码执行的结果如下图所式
+  ![$py output](https://github.com/FeifanXu/knife/blob/master/pic/output_py_pi.jpeg)
+  在knife中，由混合编程环境的输出为黄色，C++原生输出的默认白色，命令提示符的颜色由环境指定
 ## Usage: $sql
 ```C++
    
