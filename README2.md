@@ -5,7 +5,7 @@
 
 ## You have just found Knife.
 
-Knife is a simple, elegant, very convenient C++ Syntactic-Sugar API, for mixed-language programming with [Python](https://www.python.org/), [SQLite](https://www.sqlite.org/) and [Bash](https://www.gnu.org/software/bash/). It was developed with a focus on enabling simple and natural way to mixed-language programming. *enjoy the advantages of those language directly*.
+Knife is a simple, elegant, very convenient C++ _Syntactic-Sugar_ API, for mixed-language programming with [Python](https://www.python.org/), [SQLite](https://www.sqlite.org/) and [Bash](https://www.gnu.org/software/bash/). It was developed with a focus on enabling simple and natural way to mixed-language programming. *enjoy the advantages of those language directly*.
 
 Use Knife if you need a mixed-language programming library that:
 
