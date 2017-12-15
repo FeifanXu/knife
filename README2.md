@@ -56,7 +56,7 @@ int main() {
 }
 ```
  以上结果的输出为  
-  ![all_usage](https://github.com/FeifanXu/knife/blob/master/pic/all_usage_simple.png =200x300)  
+  ![all_usage](https://github.com/FeifanXu/knife/blob/master/pic/all_usage_simple.png)  
   C++的输出为白色，第三方编程环境的输出为黄色，不同环境的提示符有相应颜色来区分
 
 ------------------
