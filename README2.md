@@ -1,21 +1,24 @@
-# Knife: Mixed-Language Programming For C++
+# Knife: Mixed-Language Programming For C++11
 
 
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://github.com/FeifanXu/knife/blob/master/LICENSE)
 
 ## You have just found Knife.
 
-Knife is a simple, elegant, very convenient C++ _Syntactic-Sugar_ API, for mixed-language programming with [Python](https://www.python.org/), [SQLite](https://www.sqlite.org/) and [Bash](https://www.gnu.org/software/bash/). It was developed with a focus on enabling simple and natural way to mixed-language programming. *enjoy the advantages of those language directly*.
+Knife is a simple, elegant, very convenient C++11 [Syntactic-Sugar](https://en.wikipedia.org/wiki/Syntactic_sugar) Lib, for mixed-language programming with [Python](https://www.python.org/), [SQLite](https://www.sqlite.org/) and [Bash](https://www.gnu.org/software/bash/). It was developed with a focus on enabling simple and natural way to mixed-language programming. *enjoy the advantages of those language directly*.
 
 Use Knife if you need a mixed-language programming library that:
 
 - Can write those languages directly without trivial work like initialization and finalization
 - Supports a built-in variable number of arguments and formatted string mechanism to avoid the sprintf(...) work
 - Manipulate variables nicely, as long as variable names are same in C++ and those languages
+- Cross platform support for multithreading acceleration with a handy speed-up interface
+- Extendible to write your own language environment like [Lua](http://www.lua.org/), [R](https://www.r-project.org/), [Matlab](https://www.mathworks.com/products/matlab.html), etc.
+
 
 Documentation are still writing(sorry for my busy life).
 
-Knife is compatible with: __Python/Conda Bash/Sh__.
+Knife is compatible with: __[Python](https://www.python.org/)/[Anaconda](https://www.anaconda.com/what-is-anaconda/)__ __[Bash](https://en.wikipedia.org/wiki/Bash_(Unix_shell))/[Bourne shell](https://en.wikipedia.org/wiki/Bourne_shell)__.
 
 
 ------------------
@@ -57,7 +60,8 @@ int main() {
   TODO 先把整体代码写上，再分段解释其内容
   
   $py,$bash, and $sql are [singletons](https://en.wikipedia.org/wiki/Singleton_pattern) and [functors](https://www.cprogramming.com/tutorial/functors-function-objects-in-c++.html), which overload the function ```operator()``` and restricts the instantiation of a class to one object.  
-  they can act like a function, take the command as input, and execute it in the orrespondent environment, let's take ```void $bash(const char* cmd, ...)``` as an example
+  they can act like a function, take the command as input, and execute it in the orrespondent environment, and we call them *environments*, wich is extendible to other languages(we will talk about it later)  
+  let's take ```void $bash(const char* cmd, ...)``` as an example. (notice that the _function declaration style_ is just a notation to easily understand, $bash is **not** a function but a functor.)
 ```C++
 $bash("mkdir lalala");
 $bash("ls | grep lalala");
@@ -72,6 +76,11 @@ $bash("rm -r lalala");
 ## Installation
 
 TODO
+gcc 4.9
+clang x.x
+C++ 11
+
+[cmake](https://cmake.org/)
 
 ------------------
 
@@ -85,5 +94,7 @@ TODO
 
 ## Why this name, Knife?
 TODO
+Why bash sqlite and python?
+lua matlab, may be supported later
 
 ------------------
