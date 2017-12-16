@@ -61,8 +61,10 @@ the output of those code will be:
 
 ![all_usage](https://github.com/FeifanXu/knife/blob/master/pic/usage_simple.png)  
   
-  Outputs of C++(like [ptintf](https://en.wikipedia.org/wiki/Printf_format_string) / [std::cout](https://en.wikipedia.org/wiki/Input/output_(C%2B%2B)#Input.2Foutput_streams)) are **white**, Outputs of _Environments_ are **yellow**  
-[Prompts](https://en.wikipedia.org/wiki/Command-line_interface#Command_prompt) have **different color** corespond to the language, and commands that the _Environments_ execute are **blue**  
+  Outputs of C++(like [ptintf](https://en.wikipedia.org/wiki/Printf_format_string) / [std::cout](https://en.wikipedia.org/wiki/Input/output_(C%2B%2B)#Input.2Foutput_streams)) are **white**  
+  Outputs of _Environments_ are **yellow**  
+[Prompts](https://en.wikipedia.org/wiki/Command-line_interface#Command_prompt) have **different color** corespond to the language  
+Commands that the _Environments_ execute are **blue**  
 
 ------------------
 
