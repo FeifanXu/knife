@@ -10,7 +10,7 @@ Knife is a simple, elegant, very convenient C++11 [Syntactic-Sugar](https://en.w
 Use Knife if you need a mixed-language programming library that:
 
 - Can write those languages **directly without trivial work** like initialization and finalization
-- Supports [variable number of arguments](http://publications.gbdirect.co.uk/c_book/chapter9/stdarg.html) and [formatted string](https://en.wikipedia.org/wiki/Printf_format_string) mechanism to avoid the ```sprintf(...)``` work
+- Supports [variable number of arguments](http://publications.gbdirect.co.uk/c_book/chapter9/stdarg.html) and [formatted string](https://en.wikipedia.org/wiki/Printf_format_string) mechanism to avoid ```sprintf(...)``` works
 - Manipulate variables nicely, as long as **variable names are same** in C++ and those languages
 - **Cross platform** support for multithreading acceleration with a **handy speed-up interface**
 - Extendible to write your own language environment like [Lua](http://www.lua.org/), [R](https://www.r-project.org/), [Matlab](https://www.mathworks.com/products/matlab.html), etc.
