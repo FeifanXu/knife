@@ -69,7 +69,7 @@ Commands that the _Environments_ execute are **blue**
   let's explain those codes:
 
  
-### Start _Knife_ From $bash
+### Start _Knife_ From _$bash_
 
 ```C++
 $bash("mkdir hello");  // execute commands in the bash environment
@@ -80,7 +80,7 @@ $bash("rm -r hello");
   then [ls](https://en.wikipedia.org/wiki/Ls) lists the files in the current working directory, [grep](https://en.wikipedia.org/wiki/Grep) the "ell" from the output of [ls](https://en.wikipedia.org/wiki/Ls), [rm](https://en.wikipedia.org/wiki/Rm_(Unix))
 
 
-### Advanced Operation In $py
+### Advanced Operation In _$py_
 ```C++
 $py("msg, pi = %s, %f", "\'hello\'", 3.1415926f);   // Formatted String
 $py("print (msg)");
@@ -88,7 +88,7 @@ $py_get(float, pi); // Same Variable Name: pi
 std::cout << pi << std::endl;
 ```
 
-### Manipulate Data Using $sql
+### Manipulate Data Using _$sql_
 ```C++
 $sql("CREATE TABLE Foo(ID INTEGER, Msg TEXT);");
 int ID = 1;
