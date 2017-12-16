@@ -90,7 +90,7 @@ $py_get(float, pi); // Same Variable Name: pi
 std::cout << pi << std::endl;
 ```
 We want to define two variables in the python environment named _msg_ and _pi_. However the value of those variables are in C++. Maybe you know [sprintf](http://en.cppreference.com/w/c/io/fprintf) can compose a command string, but _kinfe_ can just take inputs like ```printf```.
-  * We use ```%s``` as the [placeholder](https://en.wikipedia.org/wiki/Printf_format_string#Format_placeholder_specification) of msg, and ```%f``` for pi, the put the value ```"\'hello\'"``` and ``` 3.1415926f``` right after the command template.
+  * We use ```%s``` as the [placeholder](https://en.wikipedia.org/wiki/Printf_format_string#Format_placeholder_specification) of msg, and ```%f``` for pi, then put the value ```"\'hello\'"``` and ``` 3.1415926f``` right after the command template.
   * You can manipulate them in python such as ```print (msg)``` by putting it into ```$py(...)```, the output of _environments_ will be **yellow**, to distinguish the output of C++ which is default **white**.
   * The [marco](https://en.wikipedia.org/wiki/C_preprocessor#Macro_definition_and_expansion) ```$py_get(<type>, <name>)``` can easily get variable value in python, ```<type>``` is the **type in C++**(e.g. ```float``` ), and ```<name>``` is the variable name **both** in C++ and Python(e.g. ```pi``` ).   
   * Finally, the ```std::cout``` is just to emphasize that variable ```float pi;``` is **defined in C++** with the **value** of ```pi``` defined in **Python**.  
