@@ -69,7 +69,7 @@ Commands that the _Environments_ execute are **blue**
   let's explain those codes:
 
  
-### Start From $bash
+### Start _Knife_ From $bash
 
 ```C++
 $bash("mkdir hello");  // execute commands in the bash environment
