@@ -18,7 +18,7 @@ Use Knife if you need a mixed-language programming library that:
 
 Documentation are still writing(sorry for my busy life).
 
-Knife is compatible with: __[Python](https://www.python.org/)/[Anaconda](https://www.anaconda.com/what-is-anaconda/)__, __[Bash](https://en.wikipedia.org/wiki/Bash_(Unix_shell))/[Bourne shell](https://en.wikipedia.org/wiki/Bourne_shell)__.
+Knife is compatible with: __[Python](https://www.python.org/) / [Anaconda](https://www.anaconda.com/what-is-anaconda/)__, __[Bash](https://en.wikipedia.org/wiki/Bash_(Unix_shell)) / [Bourne shell](https://en.wikipedia.org/wiki/Bourne_shell)__.
 
 
 ------------------
