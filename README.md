@@ -26,7 +26,7 @@ Knife is compatible with: __[Python](https://www.python.org/) / [Anaconda](https
 ## Getting started: 30 seconds to Knife  
 The basic interfaces _$bash_, _$py_, and _$sql_ are [singletons](https://en.wikipedia.org/wiki/Singleton_pattern) and [functors](https://www.cprogramming.com/tutorial/functors-function-objects-in-c++.html), which restrict the instantiation of a class to one object and overload the function ```operator()```. They can **act like** a function, for example ```void $bash(const char* cmd, ...)``` but **not** a function.  
   
-  They take a command string (or [format_placeholder](https://en.wikipedia.org/wiki/Printf_format_string#Format_placeholder_specification)) as input and execute it, we call them *Environments*, which is extendible to other languages(we will talk about it later). There is a demo shows the basic usage of _knife_.
+  They take a command string (or [format_placeholder](https://en.wikipedia.org/wiki/Printf_format_string#Format_placeholder_specification)) as input and execute it, we call them *Environments*, which is extendible to other languages(we will talk about it later). There is a **demo** shows the basic usage of _knife_.
   
 
 ```C++
@@ -67,7 +67,7 @@ Runnig this demo, we'll get:
 * [Prompts](https://en.wikipedia.org/wiki/Command-line_interface#Command_prompt) have **different color** corespond to the language  
 * Commands that the _Environments_ execute are **blue**  
   
-  let's explain those codes:
+That is just the first impression. Let's explain this demo in detail, which is very **simple**:
 
  
 ### Start _Knife_ From _$bash_
@@ -77,8 +77,11 @@ $bash("mkdir hello");  // execute commands in the bash environment
 $bash("ls | grep ell");// "ell" in "hello"
 $bash("rm -r hello");
 ```
-  firstly, ```$bash("mkdir hello");``` means the $bash [singletons](https://en.wikipedia.org/wiki/Singleton_pattern) [functors](https://www.cprogramming.com/tutorial/functors-function-objects-in-c++.html) takes the string ```"mkdir hello"``` as input, then [mkdir](https://en.wikipedia.org/wiki/Mkdir) will be executed in the your [Bash](https://www.gnu.org/software/bash/) Environment, which makes a directory in your ```./``` path.
-  then [ls](https://en.wikipedia.org/wiki/Ls) lists the files in the current working directory, [grep](https://en.wikipedia.org/wiki/Grep) the "ell" from the output of [ls](https://en.wikipedia.org/wiki/Ls), [rm](https://en.wikipedia.org/wiki/Rm_(Unix))
+  * Firstly, ```$bash("mkdir hello");``` means the $bash [singletons](https://en.wikipedia.org/wiki/Singleton_pattern) [functors](https://www.cprogramming.com/tutorial/functors-function-objects-in-c++.html) takes the string ```"mkdir hello"``` as input, then [mkdir](https://en.wikipedia.org/wiki/Mkdir) will be executed in the your [Bash](https://www.gnu.org/software/bash/) Environment, which makes a directory in your ```./``` path.  
+  * Then the [ls](https://en.wikipedia.org/wiki/Ls) command lists the files in the current working directory, [grep](https://en.wikipedia.org/wiki/Grep) searchs the "ell" from the output of [ls](https://en.wikipedia.org/wiki/Ls).  
+  * At last [rm](https://en.wikipedia.org/wiki/Rm_(Unix)) removes the 'hello' directory you have just made.  
+  
+  Yeah, the **code** of bash, python and sql can **directly** be executed in _$bash_, _$py_ and _$sql_ **without** any other works, and it's just a start.
 
 
 ### Advanced Operation In _$py_
@@ -88,6 +91,15 @@ $py("print (msg)");
 $py_get(float, pi); // Same Variable Name: pi
 std::cout << pi << std::endl;
 ```
+We want to define two variables in the python environment named _msg_ and _pi_. However the value of those variables are known in C++. Maybe you know the [sprintf](http://en.cppreference.com/w/c/io/fprintf) can 'make' a command string, but _kinfe_ already implements [format_placeholder](https://en.wikipedia.org/wiki/Printf_format_string#Format_placeholder_specification) which takes [variable number of arguments](http://publications.gbdirect.co.uk/c_book/chapter9/stdarg.html) as input just like ```printf```.
+  * The msg's value is a string 'hello', and pi is a float number 3.1415926f, so we can use ```%s``` as the placeholder of msg, and ```%f``` for pi, the put the value ```"\'hello\'"``` and ``` 3.1415926f``` right after the command template.
+  * You can manipulate them in python such as ```print (msg)``` by putting it into ```$py(...)```, the output of _environments_ will be **yellow**, to distinguish the output of C++ which is default **white**.
+  * If you want to get the variable value in python environment, you can use the [marco](https://en.wikipedia.org/wiki/C_preprocessor#Macro_definition_and_expansion) ```$py_get(<type>, <name>)```, the ```<type>``` is the variable type in C++(e.g. ```float``` in this demo), and the ```<name>``` is the variable **both in C++ and Python**, which means the **names** of variables(e.g. ```pi``` ) in C++ and Python must be **same**   
+  * The ```std::cout``` in the last line is just to emphasize that we the variable ```float pi;``` is **defined in C++**, and has the **value** of ```pi``` defined in **Python**.  
+
+We should notice that, the ```%``` in C++ formatted string means [placeholder](https://en.wikipedia.org/wiki/Printf_format_string#Format_placeholder_specification), such as ```%d``` is the placeholder of ```int```, however the [modulo operation](https://en.wikipedia.org/wiki/Modulo_operation) in most languages including python, bahs and sql is also ```operator %```, as the commands of those languages are actually strings in C++, so we use ```mod``` to replace ```%``` in those language.  
+For example, if you want to execute ```c = a%b``` in python, you need to write ```$py("c = a mod b"")``` instead of ```$py("c= a%b")``` because in C++ strings ```%``` means placeholder.
+ 
 
 ### Manipulate Data Using _$sql_
 ```C++
