@@ -5,7 +5,7 @@
 
 ## You have just found Knife.
 
-Knife is a simple, elegant, very convenient C++11 [Syntactic-Sugar](https://en.wikipedia.org/wiki/Syntactic_sugar) Lib, for mixed-language programming with [Python](https://www.python.org/), [SQLite](https://www.sqlite.org/) and [Bash](https://www.gnu.org/software/bash/). It was developed with a focus on enabling simple and natural way to mixed-language programming. *enjoy the advantages of those language directly*.
+Knife is a simple, elegant, very convenient C++11 [Syntactic-Sugar](https://en.wikipedia.org/wiki/Syntactic_sugar) Lib, for mixed-language programming with [Python](https://www.python.org/), [SQLite](https://www.sqlite.org/) and [Bash](https://www.gnu.org/software/bash/). It was developed with a focus on enabling simple and natural way to mixed-language programming. *enjoy the advantages of those languages directly*.
 
 Use Knife if you need a mixed-language programming library that:
 
@@ -24,9 +24,9 @@ Knife is compatible with: __[Python](https://www.python.org/) / [Anaconda](https
 ------------------
 
 ## Getting started: 30 seconds to Knife  
-_$bash_, _$py_, and _$sql_ are [singletons](https://en.wikipedia.org/wiki/Singleton_pattern) and [functors](https://www.cprogramming.com/tutorial/functors-function-objects-in-c++.html), which restrict the instantiation of a class to one object and overload the function ```operator()```.  
- 
-  They can **act like** a function, for example ```void $bash(const char* cmd, ...)```（but **not** a function), that take the command(or command's [format_placeholder](https://en.wikipedia.org/wiki/Printf_format_string#Format_placeholder_specification)) as input and execute it, we call them *Environments*, which is extendible to other languages(we will talk about it later)  
+The basic interfaces _$bash_, _$py_, and _$sql_ are [singletons](https://en.wikipedia.org/wiki/Singleton_pattern) and [functors](https://www.cprogramming.com/tutorial/functors-function-objects-in-c++.html), which restrict the instantiation of a class to one object and overload the function ```operator()```. They can **act like** a function, for example ```void $bash(const char* cmd, ...)``` but **not** a function.  
+  
+  They take a command string (or [format_placeholder](https://en.wikipedia.org/wiki/Printf_format_string#Format_placeholder_specification)) as input and execute it, we call them *Environments*, which is extendible to other languages(we will talk about it later). There is a demo shows the basic usage of _knife_.
   
 
 ```C++
@@ -57,14 +57,15 @@ int main() {
     return 0;
 }
 ```
-the output of those code will be:  
+Runnig this demo, we'll get:  
 
 ![all_usage](https://github.com/FeifanXu/knife/blob/master/pic/usage_simple_8.png)  
   
-  Outputs of C++(like [ptintf](https://en.wikipedia.org/wiki/Printf_format_string) / [std::cout](https://en.wikipedia.org/wiki/Input/output_(C%2B%2B)#Input.2Foutput_streams)) are **white**  
-  Outputs of _Environments_ are **yellow**  
-[Prompts](https://en.wikipedia.org/wiki/Command-line_interface#Command_prompt) have **different color** corespond to the language  
-Commands that the _Environments_ execute are **blue**  
+  Notice that:  
+* Outputs of C++(like [ptintf](https://en.wikipedia.org/wiki/Printf_format_string) / [std::cout](https://en.wikipedia.org/wiki/Input/output_(C%2B%2B)#Input.2Foutput_streams)) are **white**  
+* Outputs of _Environments_ are **yellow**  
+* [Prompts](https://en.wikipedia.org/wiki/Command-line_interface#Command_prompt) have **different color** corespond to the language  
+* Commands that the _Environments_ execute are **blue**  
   
   let's explain those codes:
 
