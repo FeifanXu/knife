@@ -56,7 +56,9 @@ int main() {
 the output of those code will be:
  
   ![all_usage](https://github.com/FeifanXu/knife/blob/master/pic/usage_simple_1_little.png)  
-the color the C++ output(like ptintf/std::cout) is **white**, and outputs of _environments_ are **yellow**, the _prompt_ has different color corespond to the language, the commands that the _environments_ execute are **blue**  
+the color the C++ output(like [ptintf](https://en.wikipedia.org/wiki/Printf_format_string)/[std::cout](https://en.wikipedia.org/wiki/Input/output_(C%2B%2B)#Input.2Foutput_streams)) is **white**, and outputs of _environments_ are **yellow**  
+the [prompt](https://en.wikipedia.org/wiki/Command-line_interface#Command_prompt) has different color corespond to the language  
+the commands that the _environments_ execute are **blue**  
 let's explain those codes
  
   
@@ -97,5 +99,7 @@ TODO
 TODO
 Why bash sqlite and python?
 lua matlab, may be supported later
+
+this style of readme file imitates the readme of (Keras)[https://github.com/keras-team/keras], which is one of my favorite project for it's easy, friendly, handy usage ^_^
 
 ------------------
