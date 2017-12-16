@@ -53,14 +53,17 @@ int main() {
     return 0;
 }
 ```
-the output of those code will be:
- 
-  ![all_usage](https://github.com/FeifanXu/knife/blob/master/pic/usage_simple.png)  
+the output of those code will be:  
+
+![all_usage](https://github.com/FeifanXu/knife/blob/master/pic/usage_simple.png)  
+  
 the color the C++ output(like [ptintf](https://en.wikipedia.org/wiki/Printf_format_string)/[std::cout](https://en.wikipedia.org/wiki/Input/output_(C%2B%2B)#Input.2Foutput_streams)) is **white**  
 and outputs of _environments_ are **yellow**  
 the [prompt](https://en.wikipedia.org/wiki/Command-line_interface#Command_prompt) has **different color** corespond to the language  
 the commands that the _environments_ execute are **blue**  
+
 ------------------
+
 let's explain those codes
  
   
