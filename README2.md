@@ -30,22 +30,22 @@ Knife is compatible with: __[Python](https://www.python.org/)/[Anaconda](https:/
 
 int main() {
 
-    std::cout << "Demo of $bash" << std::endl;
-    $bash("mkdir lalala");
+    printf("\nDemo of $bash\n");
+    $bash("mkdir lalala");  // execute commands in the bash environment
     $bash("ls | grep lalala");
     $bash("rm -r lalala");
 
-    std::cout << "Demo of $py" << std::endl;
-    $py("msg, pi = %s, %f", "\'hello\'", 3.1415926f);// formatted string
+    printf("\nDemo of $py\n");
+    $py("msg, pi = %s, %f", "\'hello\'", 3.1415926f);   // Formatted String
     $py("print (msg)");
-    $py_get(float, pi);// 'Same' Variable Name
+    $py_get(float, pi); // Same Variable Name: pi
     std::cout << pi << std::endl;
 
-    std::cout << "Demo of $sql" << std::endl;
+    printf("\nDemo of $sql\n");
     $sql("CREATE TABLE Foo(ID INTEGER, Msg TEXT);");
     int ID = 1;
     const char *Msg = "hello";
-    $sql.insert_easily("Foo", ID, Msg);// 'Same' Variable Name
+    $sql.insert_easily("Foo", ID, Msg); // Same Variable Name:ID Msg
     $sql("SELECT * FROM Foo");
     std::cout << $sql.query_result()[0][1] << std::endl;
     $sql("DROP TABLE Foo;");
@@ -53,11 +53,12 @@ int main() {
     return 0;
 }
 ```
- 以上结果的输出为  
-  ![all_usage](https://github.com/FeifanXu/knife/blob/master/pic/all_usage_simple.png)  
-  C++的输出为白色，第三方编程环境的输出为黄色，不同环境的提示符有相应颜色来区分
-  
-  TODO 先把整体代码写上，再分段解释其内容
+the output of those code will be:
+ 
+  ![all_usage](https://github.com/FeifanXu/knife/blob/master/pic/usage_simple_1_little.png)  
+the color the C++ output(like ptintf/std::cout) is **white**, and outputs of _environments_ are **yellow**, the _prompt_ has different color corespond to the language, the commands that the _environments_ execute are **blue**  
+let's explain those codes
+ 
   
   $py,$bash, and $sql are [singletons](https://en.wikipedia.org/wiki/Singleton_pattern) and [functors](https://www.cprogramming.com/tutorial/functors-function-objects-in-c++.html), which overload the function ```operator()``` and restricts the instantiation of a class to one object.  
   they can act like a function, take the command as input, and execute it in the orrespondent environment, and we call them *environments*, wich is extendible to other languages(we will talk about it later)  

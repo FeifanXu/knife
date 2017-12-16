@@ -9,30 +9,25 @@
 
 int main() {
 
-    // Bash混合编程样例
-    std::cout << "Demo of $bash" << std::endl;
-    $bash("mkdir lalala");
+    printf("\nDemo of $bash\n");
+    $bash("mkdir lalala");  // execute commands in the bash environment
     $bash("ls | grep lalala");
     $bash("rm -r lalala");
 
-    // Python混合编程样例
-    std::cout << "Demo of $py" << std::endl;
-    $py("msg, pi = %s, %f", "\'hello\'", 3.1415926f);// formatted string
+    printf("\nDemo of $py\n");
+    $py("msg, pi = %s, %f", "\'hello\'", 3.1415926f);   // Formatted String
     $py("print (msg)");
-    $py_get(float, pi);// 'Same' Variable Name
+    $py_get(float, pi); // Same Variable Name: pi
     std::cout << pi << std::endl;
 
-    // SQLite混合编程样例
-    std::cout << "Demo of $sql" << std::endl;
+    printf("\nDemo of $sql\n");
     $sql("CREATE TABLE Foo(ID INTEGER, Msg TEXT);");
     int ID = 1;
     const char *Msg = "hello";
-    $sql.insert_easily("Foo", ID, Msg);// 'Same' Variable Name
+    $sql.insert_easily("Foo", ID, Msg); // Same Variable Name:ID Msg
     $sql("SELECT * FROM Foo");
     std::cout << $sql.query_result()[0][1] << std::endl;
     $sql("DROP TABLE Foo;");
 
-    // 多线程加速样例
-    int batchNum=50;// 32-threads, do job 50 times
-    knife::speedup<32>(batchNum, [] {printf("");}, "task-foo");
+    return 0;
 }
