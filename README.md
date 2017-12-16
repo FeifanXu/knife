@@ -26,8 +26,8 @@ Knife is compatible with: __[Python](https://www.python.org/) / [Anaconda](https
 ## Getting started: 30 seconds to Knife  
 The basic interfaces _$bash_, _$py_, and _$sql_ are [singletons](https://en.wikipedia.org/wiki/Singleton_pattern) and [functors](https://www.cprogramming.com/tutorial/functors-function-objects-in-c++.html), which restrict the instantiation of a class to one object and overload the function ```operator()```. They can **act like** a function, for example ```void $bash(const char* cmd, ...)```, but **not** a function.  
   
-  They take a command string (or [format_placeholder](https://en.wikipedia.org/wiki/Printf_format_string#Format_placeholder_specification)) as input and execute it, we call them *Environments*, which is extendible to other languages(we will talk about it later). There is a **demo** shows the basic usage of _knife_.
-  
+  They take a command string (or [format_placeholder](https://en.wikipedia.org/wiki/Printf_format_string#Format_placeholder_specification)) as input and execute it, we call them *Environments*, which is extendible to other languages(we will talk about it later). There is a **demo** shows the basic usage of _knife_.  
+**Relax~** That is just the first impression. We'll explain this demo in detail, which is very **simple**:
 
 ```C++
 #include <knife.hpp>
@@ -66,9 +66,6 @@ Runnig this demo, we'll get:
 * Outputs of _Environments_ are **yellow**  
 * [Prompts](https://en.wikipedia.org/wiki/Command-line_interface#Command_prompt) have **different color** corespond to the language  
 * Commands that the _Environments_ execute are **blue**  
-  
-**Relax~** That is just the first impression. Let's explain this demo in detail, which is very **simple**:
-
  
 ### Start _Knife_ From _$bash_
 
