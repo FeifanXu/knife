@@ -76,8 +76,8 @@ $bash("mkdir lalala");
 $bash("ls | grep lalala");
 $bash("rm -r lalala");
 ```
-  firstly, ```$bash("mkdir lalala");``` means the $bash [singletons](https://en.wikipedia.org/wiki/Singleton_pattern) [functors](https://www.cprogramming.com/tutorial/functors-function-objects-in-c++.html) takes the string ```"mkdir lalala"``` as input, then this command will be executed in the your [Bash](https://www.gnu.org/software/bash/) Environment, witch makes a directory in your ```./``` path.
-  then ........
+  firstly, ```$bash("mkdir lalala");``` means the $bash [singletons](https://en.wikipedia.org/wiki/Singleton_pattern) [functors](https://www.cprogramming.com/tutorial/functors-function-objects-in-c++.html) takes the string ```"mkdir lalala"``` as input, then [mkdir](https://en.wikipedia.org/wiki/Mkdir) will be executed in the your [Bash](https://www.gnu.org/software/bash/) Environment, witch makes a directory in your ```./``` path.
+  then ........ [ls](https://en.wikipedia.org/wiki/Ls) [grep](https://en.wikipedia.org/wiki/Grep) [rm](https://en.wikipedia.org/wiki/Rm_(Unix))
 
 ------------------
 
