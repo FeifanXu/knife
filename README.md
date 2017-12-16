@@ -97,10 +97,6 @@ We want to define two variables in the python environment named _msg_ and _pi_. 
   * If you want to get the variable value in python environment, you can use the [marco](https://en.wikipedia.org/wiki/C_preprocessor#Macro_definition_and_expansion) ```$py_get(<type>, <name>)```, the ```<type>``` is the variable type in C++(e.g. ```float``` in this demo), and the ```<name>``` is the variable **both in C++ and Python**, which means the **names** of variables(e.g. ```pi``` ) in C++ and Python must be **same**   
   * The ```std::cout``` in the last line is just to emphasize that we the variable ```float pi;``` is **defined in C++**, and has the **value** of ```pi``` defined in **Python**.  
 
-We should notice that, the ```%``` in C++ formatted string means [placeholder](https://en.wikipedia.org/wiki/Printf_format_string#Format_placeholder_specification), such as ```%d``` is the placeholder of ```int```, however the [modulo operation](https://en.wikipedia.org/wiki/Modulo_operation) in most languages including python, bahs and sql is also ```operator %```, as the commands of those languages are actually strings in C++, so we use ```mod``` to replace ```%``` in those language.  
-For example, if you want to execute ```c = a%b``` in python, you need to write ```$py("c = a mod b"")``` instead of ```$py("c= a%b")``` because in C++ strings ```%``` means placeholder.
- 
-
 ### Manipulate Data Using _$sql_
 ```C++
 $sql("CREATE TABLE Foo(ID INTEGER, Msg TEXT);");
@@ -111,6 +107,14 @@ $sql("SELECT * FROM Foo;");
 std::cout << $sql.query_result()[0][1] << std::endl;
 $sql("DROP TABLE Foo;");
 ```
+
+### Handy Multi-Thread Speed-Up 
+
+### Attentions
+We should notice that, the ```%``` in C++ formatted string means [placeholder](https://en.wikipedia.org/wiki/Printf_format_string#Format_placeholder_specification), such as ```%d``` is the placeholder of ```int```, however the [modulo operation](https://en.wikipedia.org/wiki/Modulo_operation) in most languages including python, bahs and sql is also ```operator %```, as the commands of those languages are actually strings in C++, so we use ```mod``` to replace ```%``` in those language.  
+For example, if you want to execute ```c = a%b``` in python, you need to write ```$py("c = a mod b"")``` instead of ```$py("c= a%b")``` because in C++ strings ```%``` means placeholder.
+ 
+
 ------------------
 
 
