@@ -25,7 +25,8 @@ Knife is compatible with: __[Python](https://www.python.org/)/[Anaconda](https:/
 
 ## Getting started: 30 seconds to Knife
  $py,$bash, and $sql are [singletons](https://en.wikipedia.org/wiki/Singleton_pattern) and [functors](https://www.cprogramming.com/tutorial/functors-function-objects-in-c++.html), which overload the function ```operator()``` and restricts the instantiation of a class to one object.  
-  they can act like a function, take the command as input, and execute it in the orrespondent environment, and we call them *environments*, wich is extendible to other languages(we will talk about it later)  
+ 
+  they can act like a function, for example ```void $bash(const char* cmd, ...)``` , that take the command(or command's [format_placeholder](https://en.wikipedia.org/wiki/Printf_format_string#Format_placeholder_specification)) as input, and execute it in the orrespondent environment, and we call them *environments*, wich is extendible to other languages(we will talk about it later)  
   
 
 ```C++
@@ -69,14 +70,13 @@ the commands that the _environments_ execute are **blue**
 
 let's explain those codes
  
-  
- let's take ```void $bash(const char* cmd, ...)``` as an example. (notice that the _function declaration style_ is just a notation to easily understand, $bash is **not** a function but a functor.)
+
 ```C++
 $bash("mkdir lalala");
 $bash("ls | grep lalala");
 $bash("rm -r lalala");
 ```
-  firstly, the $bash [singletons](https://en.wikipedia.org/wiki/Singleton_pattern) [functors](https://www.cprogramming.com/tutorial/functors-function-objects-in-c++.html) takes the string ```"mkdir lalala"``` as input, then this command will be executed in the your [Bash](https://www.gnu.org/software/bash/) environment, witch makes a directory in your ```./``` path.
+  firstly, ```$bash("mkdir lalala");``` means the $bash [singletons](https://en.wikipedia.org/wiki/Singleton_pattern) [functors](https://www.cprogramming.com/tutorial/functors-function-objects-in-c++.html) takes the string ```"mkdir lalala"``` as input, then this command will be executed in the your [Bash](https://www.gnu.org/software/bash/) environment, witch makes a directory in your ```./``` path.
   then ........
 
 ------------------
