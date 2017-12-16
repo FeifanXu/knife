@@ -24,6 +24,9 @@ Knife is compatible with: __[Python](https://www.python.org/)/[Anaconda](https:/
 ------------------
 
 ## Getting started: 30 seconds to Knife
+ $py,$bash, and $sql are [singletons](https://en.wikipedia.org/wiki/Singleton_pattern) and [functors](https://www.cprogramming.com/tutorial/functors-function-objects-in-c++.html), which overload the function ```operator()``` and restricts the instantiation of a class to one object.  
+  they can act like a function, take the command as input, and execute it in the orrespondent environment, and we call them *environments*, wich is extendible to other languages(we will talk about it later)  
+  
 
 ```C++
 #include <knife.hpp>
@@ -67,9 +70,7 @@ the commands that the _environments_ execute are **blue**
 let's explain those codes
  
   
-  $py,$bash, and $sql are [singletons](https://en.wikipedia.org/wiki/Singleton_pattern) and [functors](https://www.cprogramming.com/tutorial/functors-function-objects-in-c++.html), which overload the function ```operator()``` and restricts the instantiation of a class to one object.  
-  they can act like a function, take the command as input, and execute it in the orrespondent environment, and we call them *environments*, wich is extendible to other languages(we will talk about it later)  
-  let's take ```void $bash(const char* cmd, ...)``` as an example. (notice that the _function declaration style_ is just a notation to easily understand, $bash is **not** a function but a functor.)
+ let's take ```void $bash(const char* cmd, ...)``` as an example. (notice that the _function declaration style_ is just a notation to easily understand, $bash is **not** a function but a functor.)
 ```C++
 $bash("mkdir lalala");
 $bash("ls | grep lalala");
