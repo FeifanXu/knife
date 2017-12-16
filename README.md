@@ -68,9 +68,6 @@ Commands that the _Environments_ execute are **blue**
   
   let's explain those codes:
 
-------------------
-
-
  
 ### Start From $bash
 
@@ -82,7 +79,7 @@ $bash("rm -r hello");
   firstly, ```$bash("mkdir hello");``` means the $bash [singletons](https://en.wikipedia.org/wiki/Singleton_pattern) [functors](https://www.cprogramming.com/tutorial/functors-function-objects-in-c++.html) takes the string ```"mkdir hello"``` as input, then [mkdir](https://en.wikipedia.org/wiki/Mkdir) will be executed in the your [Bash](https://www.gnu.org/software/bash/) Environment, which makes a directory in your ```./``` path.
   then [ls](https://en.wikipedia.org/wiki/Ls) lists the files in the current working directory, [grep](https://en.wikipedia.org/wiki/Grep) the "ell" from the output of [ls](https://en.wikipedia.org/wiki/Ls), [rm](https://en.wikipedia.org/wiki/Rm_(Unix))
 
-------------------
+
 ### Advanced Operation In $py
 ```C++
 $py("msg, pi = %s, %f", "\'hello\'", 3.1415926f);   // Formatted String
@@ -90,7 +87,7 @@ $py("print (msg)");
 $py_get(float, pi); // Same Variable Name: pi
 std::cout << pi << std::endl;
 ```
-------------------
+
 ### Manipulate Data Using $sql
 ```C++
 $sql("CREATE TABLE Foo(ID INTEGER, Msg TEXT);");
