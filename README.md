@@ -67,7 +67,7 @@ Runnig this demo, we'll get:
 * [Prompts](https://en.wikipedia.org/wiki/Command-line_interface#Command_prompt) have **different color** corespond to the language  
 * Commands that the _Environments_ execute are **blue**  
   
-That is just the first impression. Let's explain this demo in detail, which is very **simple**:
+**Relax~** That is just the first impression. Let's explain this demo in detail, which is very **simple**:
 
  
 ### Start _Knife_ From _$bash_
