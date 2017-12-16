@@ -10,9 +10,9 @@
 int main() {
 
     printf("\nDemo of $bash\n");
-    $bash("mkdir lalala");  // execute commands in the bash environment
-    $bash("ls | grep lalala");
-    $bash("rm -r lalala");
+    $bash("mkdir hello");  // execute commands in the bash environment
+    $bash("ls | grep ell");// "ell" in "hello"
+    $bash("rm -r hello");
 
     printf("\nDemo of $py\n");
     $py("msg, pi = %s, %f", "\'hello\'", 3.1415926f);   // Formatted String

@@ -35,9 +35,9 @@ Knife is compatible with: __[Python](https://www.python.org/) / [Anaconda](https
 int main() {
 
     printf("\nDemo of $bash\n");
-    $bash("mkdir lalala");  // execute commands in the bash environment
-    $bash("ls | grep lalala");
-    $bash("rm -r lalala");
+    $bash("mkdir hello");  // execute commands in the bash environment
+    $bash("ls | grep ell");// "ell" in "hello"
+    $bash("rm -r hello");
 
     printf("\nDemo of $py\n");
     $py("msg, pi = %s, %f", "\'hello\'", 3.1415926f);   // Formatted String
@@ -72,12 +72,12 @@ let's explain those codes
  
 
 ```C++
-$bash("mkdir lalala");
-$bash("ls | grep lalala");
-$bash("rm -r lalala");
+$bash("mkdir hello");  // execute commands in the bash environment
+$bash("ls | grep ell");// "ell" in "hello"
+$bash("rm -r hello");
 ```
-  firstly, ```$bash("mkdir lalala");``` means the $bash [singletons](https://en.wikipedia.org/wiki/Singleton_pattern) [functors](https://www.cprogramming.com/tutorial/functors-function-objects-in-c++.html) takes the string ```"mkdir lalala"``` as input, then [mkdir](https://en.wikipedia.org/wiki/Mkdir) will be executed in the your [Bash](https://www.gnu.org/software/bash/) Environment, witch makes a directory in your ```./``` path.
-  then ........ [ls](https://en.wikipedia.org/wiki/Ls) [grep](https://en.wikipedia.org/wiki/Grep) [rm](https://en.wikipedia.org/wiki/Rm_(Unix))
+  firstly, ```$bash("mkdir hello");``` means the $bash [singletons](https://en.wikipedia.org/wiki/Singleton_pattern) [functors](https://www.cprogramming.com/tutorial/functors-function-objects-in-c++.html) takes the string ```"mkdir hello"``` as input, then [mkdir](https://en.wikipedia.org/wiki/Mkdir) will be executed in the your [Bash](https://www.gnu.org/software/bash/) Environment, which makes a directory in your ```./``` path.
+  then [ls](https://en.wikipedia.org/wiki/Ls) lists the files in the current working directory, [grep](https://en.wikipedia.org/wiki/Grep) the "ell" from the output of [ls](https://en.wikipedia.org/wiki/Ls), [rm](https://en.wikipedia.org/wiki/Rm_(Unix))
 
 ------------------
 
