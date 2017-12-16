@@ -26,7 +26,7 @@ Knife is compatible with: __[Python](https://www.python.org/)/[Anaconda](https:/
 ## Getting started: 30 seconds to Knife
  $py,$bash, and $sql are [singletons](https://en.wikipedia.org/wiki/Singleton_pattern) and [functors](https://www.cprogramming.com/tutorial/functors-function-objects-in-c++.html), which overload the function ```operator()``` and restricts the instantiation of a class to one object.  
  
-  they can act like a function, for example ```void $bash(const char* cmd, ...)``` , that take the command(or command's [format_placeholder](https://en.wikipedia.org/wiki/Printf_format_string#Format_placeholder_specification)) as input, and execute it in the orrespondent environment, and we call them *environments*, wich is extendible to other languages(we will talk about it later)  
+  they can **act like** a function, for example ```void $bash(const char* cmd, ...)```（but not a function, that take the command(or command's [format_placeholder](https://en.wikipedia.org/wiki/Printf_format_string#Format_placeholder_specification)) as input, and execute it in the orrespondent environment, and we call them *environments*, wich is extendible to other languages(we will talk about it later)  
   
 
 ```C++
