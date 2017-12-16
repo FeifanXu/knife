@@ -106,10 +106,11 @@ $sql.insert_easily("Foo", ID, Msg); // Same Variable Name:ID, Msg
 $sql("SELECT * FROM Foo;");
 std::cout << $sql.query_result()[0][1] << std::endl;
 $sql("DROP TABLE Foo;");
-```
+```  
 
-### Handy Multi-Thread Speed-Up 
-
+TODO
+### Handy Multi-Thread Speed-Up
+TODO
 ### Attentions
 We should notice that, the ```%``` in C++ formatted string means [placeholder](https://en.wikipedia.org/wiki/Printf_format_string#Format_placeholder_specification), such as ```%d``` is the placeholder of ```int```, however the [modulo operation](https://en.wikipedia.org/wiki/Modulo_operation) in most languages including python, bahs and sql is also ```operator %```, as the commands of those languages are actually strings in C++, so we use ```mod``` to replace ```%``` in those language.  
 For example, if you want to execute ```c = a%b``` in python, you need to write ```$py("c = a mod b"")``` instead of ```$py("c= a%b")``` because in C++ strings ```%``` means placeholder.
@@ -134,6 +135,7 @@ C++ 11
 ## Support
 
 TODO
+527407514@qq.com
 
 ------------------
 
