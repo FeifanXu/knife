@@ -100,6 +100,6 @@ TODO
 Why bash sqlite and python?
 lua matlab, may be supported later
 
-this style of readme file imitates the readme of (Keras)[https://github.com/keras-team/keras], which is one of my favorite project for it's easy, friendly, handy usage ^_^
+this style of readme file imitates the readme of [Keras](https://github.com/keras-team/keras), which is one of my favorite project for it's easy, friendly, handy usage ^_^
 
 ------------------
