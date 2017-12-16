@@ -25,7 +25,7 @@ int main() {
     int ID = 1;
     const char *Msg = "hello";
     $sql.insert_easily("Foo", ID, Msg); // Same Variable Name:ID, Msg
-    $sql("SELECT * FROM Foo");
+    $sql("SELECT * FROM Foo;");
     std::cout << $sql.query_result()[0][1] << std::endl;
     $sql("DROP TABLE Foo;");
 

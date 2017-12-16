@@ -46,7 +46,7 @@ int main() {
     int ID = 1;
     const char *Msg = "hello";
     $sql.insert_easily("Foo", ID, Msg); // Same Variable Name:ID, Msg
-    $sql("SELECT * FROM Foo");
+    $sql("SELECT * FROM Foo;");
     std::cout << $sql.query_result()[0][1] << std::endl;
     $sql("DROP TABLE Foo;");
 
@@ -55,7 +55,7 @@ int main() {
 ```
 the output of those code will be:
  
-  ![all_usage](https://github.com/FeifanXu/knife/blob/master/pic/usage_simple_1_little.png)  
+  ![all_usage](https://github.com/FeifanXu/knife/blob/master/pic/usage_simple.png)  
 the color the C++ output(like [ptintf](https://en.wikipedia.org/wiki/Printf_format_string)/[std::cout](https://en.wikipedia.org/wiki/Input/output_(C%2B%2B)#Input.2Foutput_streams)) is **white**, and outputs of _environments_ are **yellow**  
 the [prompt](https://en.wikipedia.org/wiki/Command-line_interface#Command_prompt) has different color corespond to the language  
 the commands that the _environments_ execute are **blue**  
